@@ -1,0 +1,40 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, "微軟正黑體", sans-serif;
+  background-image: url("../images/wood.jpg");
+}
+
+.contain{
+  border-radius: 90px 90px 90px 90px;
+  -moz-border-radius: 90px 90px 90px 90px;
+  -webkit-border-radius: 90px 90px 90px 90px;
+  border: 6px outset #000000;
+   min-height: 400px;
+   background-color: #fff5e0;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#timeContent{
+  padding-top: 5px;
+  font-size: 20px;
+}
+
+#test1,#test2{
+  color: black ;
+}
+
+#headIcon{
+  padding-top: 20px ;
+}
+
+.clipImg{
+  width:30%;
+  margin-top: -40px;
+}
+
+.text{
+  background-color: white ;
+}
