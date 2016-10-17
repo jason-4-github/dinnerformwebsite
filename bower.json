@@ -1,0 +1,23 @@
+{
+  "name": "dinner_form",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "jason80d <jason80d@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "jquery": "^3.1.1",
+    "materialize": "^0.97.7",
+    "moment": "^2.15.1"
+  }
+}
