@@ -2,18 +2,30 @@ $(document).ready(begin);
 
 function begin(){
 
-  var $window = $(window);
+  var hei = $('.formStyle').css("height");
+  $('.tabContent').css("height",hei);
 
-  $('#formDiv').css("display","none");
-  $('#backBtnDiv').css("display","none");
+
+  function hideInSmall(){
+    if( $(window).width() < 762 ){
+      $('.contain').addClass("hide");
+      /*$('.formStyle').removeClass("m4 l4");
+      $('.formStyle').addClass("m12 l12");
+      $('#detailDiv').removeClass("m8 l8");
+      $('#detailDiv').addClass("m12 l12");*/
+    }else{
+      $('.contain').removeClass("hide");
+    }
+  }
+
+  //$(window).resize(hideInSmall);
+  //hideInSmall();
 
   //show Weekend
-  var dayTrans = ["一","二","三","四","五","六","七"];
-
   $('#timeContent').html(moment().get('year')
     + "/" + (moment().get('month')+1)
     + "/" + moment().get('date')
-    +  "<br>星期"  + dayTrans[moment().day()-1]
+    + " " + moment().format('dddd')
   );
 
   //showData - changeDiv - inputData - showData
@@ -24,7 +36,6 @@ function begin(){
       $('#modal2').openModal();
     }else{
       passValue();
-      openClose(0);
       $('#tbodyContent').html("");
       getValue();
     }
@@ -32,7 +43,7 @@ function begin(){
   });
 
   //Opening Hours
-  if( moment().hours() < 16  && moment().hours() > 8 ){
+  if( moment().hours() < 15  && moment().hours() > 8 ){
     $("#sendBtn").removeClass("disable");
   }else if( moment().hours() == 8 && moment().minutes() >= 30 ){
     $("#sendBtn").removeClass("disable");
@@ -41,48 +52,6 @@ function begin(){
     $("#sendBtn").attr("disabled","disabled");
   }
 
-  //changeDiv function
-  $("#registBtn").click(function(){
-    openClose(1);
-  });
-  $("#backBtn").click(function(){
-    openClose(0);
-  });
-
-  //screen width items
-
-  function checkWidth() {
-      var windowsize = $window.width();
-      //clip adjust
-      if( windowsize < 500 ){
-        $('.clipImg').remove();
-      }else if (windowsize < 700 ) {
-        $('.clipImg').css( "margin-top" , -20 + "px" );
-      }else if( windowsize < 800 ){
-        $('.clipImg').css( "margin-top" , -30 + "px" );
-      }
-      //date style adjust
-      if( windowsize < 828 && windowsize > 600 ){
-        $('.dateLabel').remove();
-      }
-
-      if( windowsize < 364 ){
-        window.location.href = 'http://localhost:3000/fail';
-      }
-  }
-
-  checkWidth();
-
-  $(window).resize(checkWidth);
-
-}
-
-function openClose(i){
-  var kind = [ "block" , "none" ] ;
-  $('#btnDiv').css("display",kind[i]);
-  $('#detailDiv').css("display",kind[i]);
-  $('#formDiv').css("display",kind[ Math.abs(i-1) ] );
-  $('#backBtnDiv').css("display",kind[ Math.abs(i-1) ] );
 }
 
 function passValue(){
@@ -95,7 +64,7 @@ function passValue(){
 
 
   $.ajax({
-    url: 'http://192.168.1.122:8888/apis/add',
+    url: 'http://61.222.245.150:8001/apis/add',
     type: 'post',
     contentType: 'application/json',
     data: JSON.stringify(inputValues),
@@ -111,8 +80,9 @@ function passValue(){
 }
 
 function getValue(){
+
   $.ajax({
-    url: 'http://192.168.1.122:8888/apis/listToday',
+    url: 'http://61.222.245.150:8001/apis/listToday',
     type: 'get',
     contentType: 'application/json',
     success: function(data) {
@@ -128,15 +98,35 @@ function getValue(){
 }
 
 function showData(Data){
-  for(var arrIndex in Data){
-    $('#tbodyContent').append("<tr>");
+  /*for(var arrIndex in Data){
     for(key in Data[arrIndex]){
       if(key=="date"){
-        $('#tbodyContent').append("<td>"+ (moment().get('month')+1) + "/" + moment().get('date') + "</td>");
+
+        var timeTest = moment.unix(Data[arrIndex][key].substr(0,10)).format("HH點mm分ss秒") ;
+        $('#tbodyContent').append("<tr><td>"+ timeTest + "</td>");
+
       }else{
         $('#tbodyContent').append("<td>"+ Data[arrIndex][key]+ "</td>");
       }
     }
-    $('#tbodyContent').append("</tr>");
-  }
+  }*/
+
+var tempStr = "" ;
+
+  $.each(Data , function(index ,value){
+
+    tempStr += "<tr>" ;
+    $.each(value , function(key,data){
+
+      if(key == "date"){
+        var timeTest = moment.unix(data.substr(0,10)).format("HH點mm分ss秒") ;
+        tempStr += "<td>"+ timeTest + "</td>";
+      }else{
+        tempStr += "<td>"+ data + "</td>";
+      }
+    });
+    tempStr += "</tr>" ;
+
+  });
+  $('#tbodyContent').append(tempStr);
 }

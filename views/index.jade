@@ -1,54 +1,48 @@
 extends layout
 
 block content
+
+  nav
+    div.nav-wrapper
+      a.brand-logo.center(href="#") 加班晚餐登記表
+
   .contain
-    //title
     .row
-      .col.m1.l1
-      .col.s12.m10.l10.row 
-        .col.s4.m4.l4
-          img.left.clipImg(src="images/clip.png")
-          i.material-icons.prefix.right#headIcon shopping_cart
-        .col.s8.m8.l8
-          h4.left 加班晚餐登記表
-    
-    //back button
-    .row#backBtnDiv
-      .col.m1.l1
-      .col.s12.m10.l10 
-        a.btn-floating.btn-large.waves-effect.waves-light.green#backBtn 
-          b 返回
-    
-    //form    
-    .row#formDiv
-      .col.m1.l1
-      .col.s12.m10.l10.row  
-        form#formDetail(action="")
-        .col.s12.m12.l12
-          .row
-            .input-field.col.s12.m6.l6
+
+      //back button
+        .row#backBtnDiv
+          .col.m1.l1
+          .col.s12.m10.l10
+            a.btn-floating.btn-large.waves-effect.waves-light.green#backBtn
+              b 返回
+
+      //form
+      .col.s12.m4.l4.row#formDiv
+        .col.m1.l1
+        .col.s12.m10.l10.row.formStyle.z-depth-3
+          form#formDetail(action="")
+          .col.s12.m12.l12.row
+            .input-field.col.s12.m12.l12
               i.material-icons.prefix query_builder
               .row
-                .col.s3.m3.l3
-                .col.s9.m9.l9#timeContent
-              label.dateLabel(for="icon_prefix") 日期
-              
-            .input-field.col.s12.m6.l6
+                .col.s2.m2.l2
+                .col.s10.m10.l10#timeContent
+
+            .input-field.col.s12.m12.l12
               i.material-icons.prefix account_circle
               input#input_companyId.validate(type="text" name="companyId")
               label(for="icon_telephone") 工號
-              
-          .row
-            .input-field.col.s12.m6.l6
+
+            .input-field.col.s12.m12.l12
               i.material-icons.prefix translate
               input#input_name.validate(type="text" name="name")
               label(for="icon_telephone") 姓名
-              
-            .input-field.col.s12.m6.l6
+
+            .input-field.col.s12.m12.l12
               i.material-icons.prefix view_list
               .row
-                .col.s3.m3.l3
-                .col.s9.m9.l9.switch: p
+                .col.s2.m2.l2
+                .col.s10.m10.l10.switch: p
                   input(name="item" type="radio" id="test1" value="便當")
                   label(for="test1")
                     b 便當
@@ -56,46 +50,44 @@ block content
                   input(name="item" type="radio" id="test2" value="麵包")
                   label(for="test2")
                     b 麵包
-                  
-              
-          .col.s12.m12.l12(style="padding-top:60px;text-align:center")
-            button.btn.waves-effect.waves-light#sendBtn(type="submit" name="action") 送出
-              i.material-icons.right send
-    
-    //notice
-    .row#modal1.modal
-      .modal-content
-        h4.center 登記成功
-      div.modal-footer
-        a.modal-action.modal-close.waves-effect.waves-green.btn-flat 確定
-        
-    //notice2
-    .row#modal2.modal
-      .modal-content
-        h4 Oops !!
-        p
-          h5.center 有欄位沒有填，請再確認一次!!
-      div.modal-footer
-        a.modal-action.modal-close.waves-effect.waves-green.btn-flat 確定
 
-    //write button
-    .row#btnDiv
-      .col.m1.l1
-      .col.s12.m10.l10 
-        a.btn-floating.btn-large.waves-effect.waves-light.green#registBtn 
-          b.animated.infinite.bounceIn.animWords 登記
-    
-    //result
-    .row#detailDiv
-      .col.m1.l1
-      .col.s12.m10.l10
-        .tabContent
-          table.striped
-            thead
-              tr
-                th 日期
-                th 工號
-                th 姓名
-                th 選項
-            tbody#tbodyContent
-  
+
+            .col.s12.m12.l12(style="padding-top:60px;text-align:center")
+              button.btn.waves-effect.waves-light#sendBtn(type="submit" name="action") 送出
+                i.material-icons.right send
+
+      //notice
+      .row#modal1.modal
+        .modal-content
+          h4.center 登記成功
+        div.modal-footer
+          a.modal-action.modal-close.waves-effect.waves-green.btn-flat 確定
+
+      //notice2
+      .row#modal2.modal
+        .modal-content
+          h4 Oops !!
+          p
+            h5.center 有欄位沒有填，請再確認一次!!
+        div.modal-footer
+          a.modal-action.modal-close.waves-effect.waves-green.btn-flat 確定
+
+      //write button
+        .row#btnDiv
+          .col.m1.l1
+          .col.s12.m10.l10
+            a.btn-floating.btn-large.waves-effect.waves-light.green#registBtn: b 登記
+
+      //result
+      .col.s12.m8.l8.row#detailDiv
+        .col.m1.l1
+        .col.s12.m10.l10
+          .tabContent.z-depth-3
+            table.bordered.highlight.centered
+              thead.title-view
+                tr
+                  th.title 時間
+                  th.title 工號
+                  th.title 姓名
+                  th.title 選項
+              tbody#tbodyContent

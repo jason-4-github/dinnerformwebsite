@@ -1,16 +1,7 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, "微軟正黑體", sans-serif;
-  background-image: url("../images/wood.jpg");
-}
-
-.contain{
-  border-radius: 90px 90px 90px 90px;
-  -moz-border-radius: 90px 90px 90px 90px;
-  -webkit-border-radius: 90px 90px 90px 90px;
-  border: 6px outset #000000;
-   min-height: 400px;
-   background-color: #fff5e0;
+  background-image: url("../images/backImg.jpeg");
+  background-size: cover;
 }
 
 a {
@@ -37,4 +28,53 @@ a {
 
 .text{
   background-color: white ;
+}
+
+.nav-wrapper{
+  background-color: rgba(0, 0, 0,0.8);
+}
+
+.switch{
+  margin-top: -20px ;
+}
+
+.contain{
+  padding-top: 30px ;
+
+}
+
+.formStyle{
+  background-color: rgba(255,255,255,0.6);
+  padding-bottom: 20px !important;
+}
+
+.tabContent{
+  background-color: rgba(255,255,255,0.6);
+  padding-bottom: 20px !important;
+}
+
+#sendBtn{
+  background-color: #00312d;
+}
+
+@media only screen and (max-width: 992px) and (min-width: 600px) {
+  #timeContent{
+    padding-top: 5px;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 744px) and (min-width: 600px) {
+  #timeContent{
+    padding-left: 40px;
+  }
+}
+
+.title-view {
+  background-color: rgba(121, 189, 143, 0.5);;
+}
+
+.title{
+  font-weight: 600;
+  font-size: 20px;
 }
