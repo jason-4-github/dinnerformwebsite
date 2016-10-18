@@ -13,10 +13,6 @@ a {
   font-size: 20px;
 }
 
-#test1,#test2{
-  color: black ;
-}
-
 #headIcon{
   padding-top: 20px ;
 }
@@ -51,6 +47,7 @@ a {
 .tabContent{
   background-color: rgba(255,255,255,0.6);
   padding-bottom: 20px !important;
+  overflow: auto;
 }
 
 #sendBtn{
@@ -77,4 +74,8 @@ a {
 .title{
   font-weight: 600;
   font-size: 20px;
+}
+
+#itemOption{
+  color: black;
 }

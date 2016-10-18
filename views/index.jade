@@ -4,7 +4,7 @@ block content
 
   nav
     div.nav-wrapper
-      a.brand-logo.center(href="#") 加班晚餐登記表
+      a.brand-logo.center(href="#") 午餐登記表
 
   .contain
     .row
@@ -42,14 +42,10 @@ block content
               i.material-icons.prefix view_list
               .row
                 .col.s2.m2.l2
-                .col.s10.m10.l10.switch: p
-                  input(name="item" type="radio" id="test1" value="便當")
-                  label(for="test1")
-                    b 便當
-                  &nbsp&nbsp
-                  input(name="item" type="radio" id="test2" value="麵包")
-                  label(for="test2")
-                    b 麵包
+                .col.s10.m10.l10.switch: p 
+                  input.filled-in#filled-in-box(type="checkbox" name="item" value="要訂")
+                  label(for="filled-in-box"): b#itemOption 便當
+                  
 
 
             .col.s12.m12.l12(style="padding-top:60px;text-align:center")
@@ -60,7 +56,7 @@ block content
       .row#modal1.modal
         .modal-content
           h4.center 登記成功
-        div.modal-footer
+        .modal-footer
           a.modal-action.modal-close.waves-effect.waves-green.btn-flat 確定
 
       //notice2
@@ -69,7 +65,7 @@ block content
           h4 Oops !!
           p
             h5.center 有欄位沒有填，請再確認一次!!
-        div.modal-footer
+        .modal-footer
           a.modal-action.modal-close.waves-effect.waves-green.btn-flat 確定
 
       //write button
